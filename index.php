@@ -1,15 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="index.php" method="post">
+        <label>x:</label>
+        <input type="text" name="x">
+        <label>y:</label>
+        <input type="text" name="y">
+        <input type="submit" value="total">
+    </form>
+</body>
+</html>
+
 <?php 
 
-//Cosas de espacios de nombre
-header("Content-Type: application/json; charset:UTF-8");
+    $x = $_POST["x"];
+    $y = $_POST["y"];
+    $total = null;
 
-//Se desaconseja completamente, como práctica de código, la combinación de varios espacios de nombres en un mismo fichero. El caso de uso principal es combinar varios scripts de PHP en el mismo fichero.
+    //Todo: -> funciones matemáticas
 
-//El valor de __NAMESPACE__ es una cadena que contiene el nombre del espacio de nombres actual. En código global, que no es de espacio de nombres, contiene una cadena vacía. La constante __NAMESPACE__ es útil para construir nombres dinámicamente.
-
-
-//Sin ninguna definición de espacios de nombres, todas las definiciones de clases y funciones son colocadas en el espacio global, como si lo estuvieran antes de que PHP soportara los espacios de nombres. Prefijar un nombre con \ especificará que el nombre es requerido desde el espacio global incluso en el contexto del espacio de nombres.
-
-
-
-?>
+    // abs($x) -> //? Retorna el valor absoluto
+    // round($x) -> //? Transforma un número flotante a entero al valor que más se aproxime
+    // floor($x) -> //? Transforma un número flotante a entero hacia abajo 4.12 = 4
+    // ceil($x) -> //? Transforma un número flotante a entero hacia arriba 4.12  = 5
+    // pow($x, $y) -> //? Retorna la potencia
+    //sqrt($x) -> //? Retorna la raiz cuadrada
+    // max($x, $y, ...) -> //? Retorna el valor mayor en un arreglo. 
+    // min($x, $y, ...) -> //? Lo mismo de max pero el menor
+    // pi() -> //? Retorna 3.1416...
+    // rand() or rand(1,100) -> //? Retorna un número random entre dos parámetros
+    
+ ?>
