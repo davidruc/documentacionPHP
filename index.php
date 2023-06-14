@@ -1,12 +1,10 @@
 <?php
 
-// TODO: include, require, include_once, require_once
+//Función Json_encode y Json_decode 
 
-//* Son funciones que se utilizan para incluir archivos externos de un programa.
+//*La función json_encode() en PHP se utiliza para convertir una estructura de datos en PHP en una cadena JSON.
 
-//? El include e include_once permite incluir un archivo PHP en el programa, la diferencia está en que el once permite la inclusión una única vez.
-
-//! El require y require_once, son muy similares que el include e include_once, pero con la diferencia de que si no encuentran el archivo que van a incluir detienen la ejecución del programa 
+//* La función json_decode() en PHP se utiliza para convertir una cadena JSON en una estructura de datos de PHP. Esta función toma una cadena JSON y la convierte en un objeto, un array asociativo o un valor escalar según corresponda.
 
 ?>
 
@@ -21,7 +19,23 @@
 </head>
 <body>
     <header>
-        <?php include("includes/header.php")?>
+        <?php include("includes/header.php"); ?>
     </header>
+    <nav>
+        <?php include("includes/enlaces.php"); ?>
+    </nav>
+
+    <?php
+        var_dump($productos);
+        echo "<br><br>";
+        $json = json_encode($productos, JSON_UNESCAPED_UNICODE);
+        var_dump($json);
+        
+        echo "<br><br>".$data->nombre."<br>";
+        echo $data->edad;
+
+
+        //!En pocas palabras uno es el proceso inverso del otro. json_decode convierta algo a un objeto y json_encode transforma un objeto en un string :D
+    ?>
 </body>
 </html>
