@@ -1,20 +1,35 @@
 <?php
 
-//Todo: MODIFICADORES DE ACCESO en PHP
+//Todo: Clases
 
-//*Son palabras claves para controlar la visibilidad de atributos y métodos dentro de las clases
+//*es una plantilla que nos permite definir las características y comportamientos de los objetos que se pueden crear a partir de dicha clase
 
-//! En PHP hay 3 tipos de modificadores de acceso: Publico, privado y protegido
+//! Instanciar una clase es de lo más sencillo del mundo
+
+// se define una variable $objeto a crear y se utiliza la palabra reservada "new" se le pone el nombre de la clase y los parámetros necesarios en caso de ser requeridos.
+
+//* exp: $persona = new Persona("David", 22);
+
+//? Una vez instanciada una clase puedo acceder a los métodos y atributos de ella 
+
+//* exp: $persona->show_name(); //En el caso de que esta función fuera la que me permite conocer el nombre de mi objeto.
 
 
-//? Public: Los miembros que son declarados públicos permiten ser llamados o accedidos desde cualquier parte, incluso por fuera de la clase.
 
-//? Private: Los miembros declarados privados sólo pueden ser utilizados desde la clase que la creo.
+class Persona{
+    public function __construct(private $nombre, protected int $edad){
+        $this->nombre = $nombre;
+        $this->edad = $edad;
+    }
+    public function getNombre(){
+        return $this->nombre;
+    }
+    public function setNombre($nombre){
+        $this->nombre = $nombre;
+    }
+}
 
-//? Protected: Los miembros que son declarados protegidos pueden ser llamados desde la clase que fueron creados y desde clases heredadas. Ya por fuera si no :p
-
-//! Es importante elegir adecuadamente los modificadores de acceso en función de las necesidades de diseño y la seguridad de la aplicación. Un buen diseño de clases utiliza el encapsulamiento y establece un acceso controlado a los miembros, evitando el acceso directo a los datos internos desde fuera de la clase y fomentando el uso de métodos para su manipulación. 
-
-//*Básicamente manejar bien los modificadores de acceso permite darle una correcta seguridad al programa.
-
+$persona = new Persona("David", 22);
+$miNombre = $persona->getNombre();
+echo $miNombre; 
 ?>
