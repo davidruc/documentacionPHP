@@ -1,34 +1,36 @@
 <?php
 
-//? Las estructuras de control son las mismas de js, if, for, foreach, switch, while, do-while, también existe una estructura de control nueva que es el "match". 
+//* Usar la línea de código 
+declare(strict_types = 1);
+//* para generar una declaración de tipos estrictos 
 
-//* La estructura de control match es muy similar al switch, con la diferencia que compara por identidad, es un poco más estrícta. 
 
-//? Algo importante de las estructuras de control es el control de excepciones. Nos permiten manejar errores o situaciones inespiradas que puedan ocurrir en la ejecución del programa
 
-//TODO: Funciones definidad por el usuario
+//* Funciones que no retornan un valor. 
 
-//* Son bloques de código reutilizables en varias partes del código que se pueden llamar en partes específicas del programa.Esto permite que el código sea modular y reutilizable. Son lo mismo que en js 
-
-function funcionDePrueba($num1, $num2){
+//? Las funciones que no retornan un valor se llaman "void". Se puede usar la palabra reservada "void" para definir una función de este tipo.
+function sumar($num1, $num2): void {
     echo $num1 + $num2;
 }
-funcionDePrueba(3,4); // Hay que usar la palabra reservada "function" para hacer uso de las funciones. 
+sumar(10, 2);
 
-//! En php existen distintas formas de definir funciones:
+//! No es completamente necesario utilizar la palabra reservada void en las funciones que no retornan ningun valor
+//Todo: SIN EMBARGO, ES BUENA PRÁCTICA UTILIZARLO PORQUÉ FACILITA EL ENTENDIMIENTO DEL CÓDIGO.
 
-    // Existen las funciones anónimas, las funciones variables y también las funciones flecha.
+//*Para hacer uso de funciones que retornan un valor se utiliza la palabra reservada return. 
 
-    //ej de función variable:
+//! SI DESEO INDICAR EL TIPO DE DATO QUE VA A RETORNAR LA FUNCIÓN DEBO PONER :? Y EL TIPO DE DATO: Ejemplo ->
 
-    $saludo = function($nombre){
-        echo "Hola". $nombre;
-    };
+function usuarioAutentificado(bool $autentificado) : ?string{
+    if($autentificado){
+        return "Usuario autentificado";
+    }
+    else {
+        return null;
+    }
+}
 
-    $saludo("mundo");
-
-
-
+//? En el caso anterior se deberá ingresar un valor en la función booleano y retornará un valor tipo cadena de texto.
 
 
 ?>
