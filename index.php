@@ -1,64 +1,91 @@
 <?php 
+   
+    //TODO: Arrays, Arrays asociativos y funciones para Arrays
 
-    //!COSAS BÁSICAS PHP
+    //* Los arrays son estructuras de datos para almacenar múltiples valores en una sola variable. PUEDEN CONTENER CUALQUIER TIPO DE VALOR.
 
-    //TODO: Funciones de salida en PHP
+    //!Sintaxis: 
 
-    echo "Hola mundo";
-    printf("No estoy cheto"); //?Un echo no tan cheto, sólo puede imprimir una cadena de texto a la vez 
-  
-    //TODO: Variables y constantes
+    $myArray = array("dato1", "dato2", 32, true);
+    // O TAMBIÉN 
+    $myArray = ["dato1", "dato2", 32, true];
 
-    //Las variables se definen con $, hay reglas para su definición, como por ejemplo que no comiencen con un número o con un caracter especial
+    //! Se pueden acceder a los datos mediante sus posiciones
 
-    $variable = "hola";
-    $numero = 323223;
+    echo "Mi posición 1 del array es: ".$myArray[1]."<br><br>"; //? Al igual que en otros lenguajes las posicones de un array comienzan por el 0, por lo que $myArray[1] retornará el "dato2"
 
-    //Las constantes funcionan como en cualquier lenguaje, son espacios que se reservan en la ejecución del programa y no cambian. Por buena práctica siempre son definidas en MAYUSCULAS. 
+    //! Función PUSH y UNSHIFT 
 
-    //Se utiliza la palabra reservada //? define("NOMBRE_CONSTANTE", "valor asignado");
+    //* Para añadir un elemento al final del array se utiliza array_push
 
-    define("POKEMON_MAS_FUERTE", "Ratata");
+    array_push($myArray, "ultimo dato");
 
-    //TODO: Tipos de datos
+    //* Para añadir un elemento al comienzo del array se utiliza array_unshift
 
-    //Enteros, flotantes, cadenas de texto, booleanos, arreglos, objetos, recursos (se utilizan para almacenar referencias a recursos externos como conexiones a bases de datos o archivos externos al programa) y Nulos //? En resumen int - float - string - bool - array - object - resource - null.
+    array_unshift($myArray, "primer dato");
+
+    //! Función POP
+
+    //* La función array_pop elimina el último dato del array y lo devuelve, ejemplo:
+    var_dump($myArray);
+    echo "<br><br>";
+    $dato_eliminado = array_pop($myArray);
+    var_dump($myArray);
+    echo "<br><br>";
+    echo "Mi dato eliminado fue: ". $dato_eliminado."<br><br>";
+
+    //! Más adelante realizaré un commit donde se expliquen todas las funciones de arrays más utilizadas en PHP
 
 
-    //*PHP tambien permite datos como constantes y datos compuestos como estructuras de datos o clases. 
 
-    //TODO: Operadores Lógicos
+    //? Los arrays asociativos en PHP son un tipo de estructura de datos que permiten asociar claves con valores. A diferencia de los arrays indexados que utilizan enumeración para poder acceder a los datos, los arrays asociativos utilizan CLAVES ÚNICAS para poder acceder a cada uno de sus valores
 
-    //? 1 Operadores aritméticos
+    $myArrayAsociativo = array(
+        "clave1" => "val1",
+        "clave2" => "val2",
+        "clave3" => "val3"
+    );
+    $myArrayAsociativo = [
+        "clave1" => "val1",
+        "clave2" => "val2",
+        "clave3" => "val3"
+    ];
 
-    // + , - , * , / , % , ** //! Funcionan igual que en cualquier lenguaje de programación
+    //* Si deseo acceder a los valores de este array tengo que hacer la consulta directamente desde el nombre de la clave:
+
+    echo $myArrayAsociativo["clave2"]."<br><br>"; //? Retornará "val2"
+
+    // PHP introduce el bucle foreach inicialmente para poder recorrer arrays y objetos. //? foreach($nombreArray as $clave => $valor){}
+
+    foreach($myArrayAsociativo as $clave => $valor){
+        echo "Mi clave es ". $clave. ", y su valor es ". $valor."<br><br>"; 
+    }
     
-    //? 2 Operador de asignación  "="
+    //* También es posible meter un array dentro de un array, sólo que al igual que en JS toca hacer una doble iteración para poder acceder a los datos de ese array anidado.
 
-    //? 3 Operadores para ARRAYS
+    //! Funciones adicionales
 
-    // + -> //! Union de arrays
-    // == -> //! Equivalencia
-    // === -> //! Identidad
-    // "!=" o <> -> //! Inequivalencia
-    // "!==" -> //! NO-identidad
+    //* La función in_array evalua si existe un elemento en un array y devuelve un booleano
 
-    //? 4 Operaodres lógicos
+    in_array(32, $myArray); //? Devolverá un "true"
 
-    // && y and -> sinifican And
-    // || y or -> significan Or
-    // xor -> //! Si un dato es verdadero devuelve verdadero pero pero si los dos son verdaderos devuelve falso, en eso se diferencia del or 
-    // "!" -> diferente o Not
+    // SORT & RSORT //* Se encargan de ordenar elementos numéricos de un array
 
-    //? 5 Operadores de comparación
+    $arrayNumerico = [2, 4,2,432,3,2,1,34,23];
 
-    // == -> //! igualdad
-    // === -> //! Identidad
-    // "!=" ó <> -> //! No-igualdad
-    // "!==" -> //! No-Identidad
-    // < - <= -> //! Menor que & Menor o igual que
-    // > - >= -> //! Mayor que & Mayor o igual que
-    // <=> -> //! Operador NAVE ESPACIAL:  Si son iguales devuelve 0, si el primero es mayor que el segundo devuelve 1 y si el primero es menor que el segundo devuelve -1.
+    sort($arrayNumerico); //! De menor a mayor
+    rsort($arrayNumerico); //! De mayor a menor
 
 
+    //? Si lo que quiero es ordenar un array asociativo lo que tengo que utilizar:
+
+    // asort()  -> //!ordena por valores (orden alfabético)
+    // arsort()  -> //!ordena por valores (z primero)
+    // ksort() -> //!ordena por llaves (orden alfabetico)
+    // krsort() -> //!ordena por llaves (De la z a la A)
+
+    //? Las funciones Isset() y Empty():
+
+    //* Son dos funciones útiles para conocer si una variable está definida o si una variable está vacía.
+    
  ?>
