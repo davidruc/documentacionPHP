@@ -1,121 +1,65 @@
 <?php
-header("Content-type:application/json");
-//TODO: Funciones más utilizadas de arrays:
- 
-//array_flip() intercambia las claves con sus valores correspondientes en un array: exp
 
-    $array = [
-        "nombre"=>"david",
-        "edad"=>22,
-        "apellido"=> "chacón"
-    ];
+//TODO: PHP intermedio
 
-    $changes = array_flip($array);
-    var_dump($changes);
-    echo "\n\n";
-//array_fill() rellena un array con un valor especificado, se le ingresan 3 valores *PRIMERO: El número en el que comienza la clave a contar, **SEGUNDO: El número de repeticiones del valor ,***TERCERO: El valor especificado. Ej:
+//! POO 
 
+//* es un paradigma de programación que se basa en el concepto de "objetos". Los objetos son entidades que representan conceptos del mundo real y que pueden tener propiedades (atributos) y realizar acciones (métodos).
 
-    $array = array_fill(3,5, "Hola mundo!"); //*Comienza en 3 el contador y se repite 5 veces el contenido.
-    var_dump($array);
-    echo "\n\n";
+//En la programación orientada a objetos, los objetos son la base fundamental y se crean a partir de clases. Una clase es una plantilla o un molde que define las propiedades y comportamientos que tendrán los objetos que se creen a partir de ella.
 
-//array_filter()  Filtra elementos de un array usando una función callback
+//? PHP es un lenguaje de programación que frecuentemente está dirigida el POO 
 
-    function impar($var)
-    {
-        // Retorna siempre que el número entero sea impar
-        return $var & 1;
+//* Los principales conceptos de la programación orientada a objetos son:
+
+    //? Clase: Es una plantilla o definición que describe las características y comportamientos de los objetos que se pueden crear a partir de ella.
+    //? Objeto: Es una instancia de una clase. Representa un individuo o entidad específica y tiene sus propias propiedades y comportamientos.
+    //? Atributos: Son las propiedades o características de un objeto. Definen el estado de un objeto y se representan mediante variables en la clase.
+    //? Métodos: Son las acciones o comportamientos que un objeto puede realizar. Representan las operaciones que pueden realizarse con un objeto y se definen como funciones en la clase.
+
+//! Las copie y pegué del manual porque me gusta mucho como las definen. 
+
+    //todo: Encapsulación: Es el principio que establece que los atributos y métodos relacionados deben agruparse en una clase para poder ocultar detalles internos y mostrar solo ciertas cosas, o una interfaz pública. 
+    //* Esto se logra con la definición de los niveles de acceso "público- public", "privado-private" o "protegido-protect"
+
+    //todo: Herencia: Es un mecanismo para crear nuevas clases en base de clases que ya existen. La clase que se utiliza como base para la creación de la otra se denomina "clase Padre" o "super clase" y por consecuencia, la otra se llama "clase hija" o "subclase". 
+    //* La herencia de clases así como en Javascript permite la utilización de métodos y propiedades públicas. En el caso del método construct siempre se puede usar por el hecho de que siempre es creado de manera pública.
+
+    //todo: Polimorfismo: Es la capacidad de un objeto de tomar diferentes formas o comportarse de diferentes maneras según el contexto. 
+    //*Esto significa que puedo tener varias clases que heredan de una misma clase base, y cada una de ellas puede tener su propia implementación del método heredado. ejemplo sencillito: 
+    
+    
+    // Clase base
+    class Animal {
+        public function hacerSonido() {
+            echo "El animal hace un sonido genérico.";
+        }
     }
 
-    function par($var)
-    {
-        // Retorna siempre que el número entero sea par
-        return !($var & 1);
+    // Clase derivada
+    class Perro extends Animal {
+        public function hacerSonido() {
+            echo "El perro ladra.";
+        }
     }
 
-    $array1 = ['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5];
-    $array2 = [6, 7, 8, 9, 10, 11, 12];
-
-    echo "Impar :\n";
-    print_r(array_filter($array1, "impar"));
-    echo "Par:\n";
-    print_r(array_filter($array2, "par"));
-    echo "\n\n";
-
-    //! También puedo definir la función que quiero llamar dentro del método
-
-// array_map() Aplica una función a cada elemento de un array y devuelve un nuevo array con los resultados.
-
-    function cube($n)
-    {
-        return($n * $n * $n);
+    // Clase derivada
+    class Gato extends Animal {
+        public function hacerSonido() {
+            echo "El gato maulla.";
+        }
     }
 
-    $a = array(1, 2, 3, 4, 5);
-    $b = array_map("cube", $a);
-    print_r($b);
-    echo "\n\n";
+    // Crear objetos de las clases derivadas
+    $animal = new Animal();
+    $perro = new Perro();
+    $gato = new Gato();
 
-// array_reduce(): Reduce un array a un solo valor aplicando una función de devolución de llamada.
+    // Llamar al método hacerSonido() de cada objeto
+    $animal->hacerSonido(); // Imprime "El animal hace un sonido genérico."
+    $perro->hacerSonido(); // Imprime "El perro ladra."
+    $gato->hacerSonido(); // Imprime "El gato maulla."
 
-    function suma($carry, $item)
-    {
-        $carry += $item;
-        return $carry;
-    }
+    //! De esta forma tengo 3 objetos iguales, que se comportan de maneras distintas gracias al polimorfismo.
 
-    function producto($carry, $item)
-    {
-        $carry *= $item;
-        return $carry;
-    }
-
-    $a = array(1, 2, 3, 4, 5);
-    $x = array();
-
-    var_dump(array_reduce($a, "suma")); // int(15), ya que 1+2+3+4+5 =  15
-    var_dump(array_reduce($a, "producto", 10)); // int(1200), ya que: 10*1*2*3*4*5
-    var_dump(array_reduce($x, "suma", "No hay datos a reducir")); // string(22) "No hay datos a reducir"
-    echo "\n\n";
-
-// array_key_exists(): Comprueba si una clave existe en un array.
-    $array = [
-        "nombre"=>"david",
-        "edad"=>22,
-        "apellido"=> "chacón"
-    ];
-    var_dump(array_key_exists("nombre", $array)); //Retorna TRUE, porque si existe
-    var_dump(array_key_exists("nombrsss", $array)); //Retorna FALSE, porque NO existe
-    echo "\n\n";
-
-//in_array(): Comprueba si un valor existe en un array.
-
-    //! La misma vaina que el de arriba solo que con valores, puede usarse en arrays no asociativos, aunque aquí entre nos, en php todos los arrays son asociativos.
-
-
-//array_rand(): Devuelve una o varias claves aleatorias de un array.
-
-    //! Esto lo que hace es coger de un array grande una clave aleatoria y devolverla como una array. En el caso en que no se ingrese ningún segundo parámetro. En caso tal de que se ingrese el segundo parámetro numérico se devuelve un array con ese número de elementos.
-
-    $array_random = array_rand($a, 2); //siempre retorna un valor aleatorio diferente.
-    var_dump($array_random); 
-    echo "\n\n";
-
-
-//array_unique(): Elimina los valores duplicados de un array.
-
-    //! Sin mucho que aportar a esa explicación
-
-//array_intersect(): Devuelve un array con los valores comunes a todos los arrays dados.
-
-    //! Sin mucho que aportar x2
-
-//array_diff(): Devuelve un array con los valores del primer array que no están presentes en los arrays adicionales.
-
-    //! útil para la comparación de arrays: sintaxis array_diff(array $array1, array $array2, array $...) 
-    //? Puedo meter N arrays y retornará un array con todas las diferencias entre el primer array (el array1) con todos los N arrays que hay después.
-
-//array_sum(): Devuelve la suma de todos los valores de un array numérico.
-//array_reverse(): Revierte el orden de los elementos en un array.
 ?>
