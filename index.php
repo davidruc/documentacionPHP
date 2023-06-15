@@ -1,30 +1,62 @@
 <?php
 
-include("includes/Persona.php");
-
-//Todo: Métodos estáticos
 
 
-//! En programación, un método estático es un método que pertenece a la clase en sí y no a una instancia específica de la clase
+//Todo: CLASES ABSTRACTACTAS
 
-//* Por eso mismo es que a diferencia de los métodos de instancia, los métodos estáticos se pueden llamar directamente en la clase sin necesidad de crear un objeto o instancia de la misma.
- 
-//? HAY CIERTAS COSAS IMPORTANTES QUE TENER EN CUENTA DE LOS MÉTODOS ESTÁTICOS DE PHP, entre ellos los siguientes: 
+//? Una clase abstracta es una clase que no se puede instanciar directamente. Sirve más bien como una plantilla o base para otras clases. Sirve para definir una estructura común y los métodos deben implementarse en las clases hijas.
 
-//* No requieren una instancia: Los métodos estáticos se pueden invocar directamente desde la clase, utilizando la sintaxis Clase::metodoEstatico(), sin necesidad de crear un objeto de la clase. 
+//! Para definir una clase abstracta se utiliza la palabra clave "abstract" antes de la declaración de la clase. 
 
-//! No pueden acceder a propiedades de instancia, no pueden acceder directamente a las propiedades de instancia de la clase, por lo mismo que no están instanciadas. Sólo pueden acceder a propiedades estáticas que pertenezcan a la clase.
 
-// Por lo mismo de arriba, no pueden utilizar el $this.
+//TODO: Métodos abstractos: 
 
-//TODO: Útiles para utilidades compartidas: Los métodos estáticos son útiles para definir funciones o utilidades que no dependen del estado de una instancia específica. Se pueden utilizar para operaciones globales, cálculos matemáticos, acceso a bases de datos, manipulación de archivos, etc.
+//? Una clase abstracta puede contener métodos abstractos, también se utiliza la palabra clave abstract antes. Son métodos que no tienen implementación en la clase abstracta, deben ser implementados en las clases hijas. La declaración de un método abstracto no incluye el cuerpo del método. exp:
+
+abstract class ClaseAbstracta {
+    abstract public function metodoAbstracto();
+}
+
+//TODO: Herencia abstracta:
+
+//? Las clases hijas de una clase abstracta deben implementar todos los métodos abstractos definidos en la clase abstracta. Si una clase hija llega a no implementar todos los métodos abstractos, DEBE SER DECLARADA TAMBIÉN COMO ABSTRACTA, por lo que no puede ser instanciada y deberá ser heredada nuevamente por otra clase. UNA CLASE HIJA PUEDE EXTENDER SOLO Y ÚNICAMENTE UNA CLASE ABSTRACTA A LA VEZ. esto significa que la herencia muere directamente al utilizar una clase más.
+
+//! Las clases abstractas no  se pueden instanciar usando new. Toca instanciarlas mediante las clases hijas.
+
+//TODO: Implementación de métodos abstractos:
+
+//? Las clases hijas deben proporcionar una implementación concreta de los métodos abstractos definidos en la clase abstracta. La implementación debe tener la misma firma (nombre y parámetros ) que como se define en el método abstracto. ej:
+
+
+abstract class Animal {
+    abstract public function hacerSonido();
+}
+
+class Perro extends Animal {
+    public function __constructor(){}
+    public function hacerSonido(){
+        echo "!guau! \n\n";
+    }
+}
+
+class Gato extends Animal {
+    public function __constructor(){}
+    public function hacerSonido(){
+        echo "!miau";
+    }
+}
+
+$perrito = new Perro();
+$michi = new Gato();
+
+$perrito->hacerSonido();
+$michi->hacerSonido();
+
 
 
 //! ---- REVISAR BIEN EL ARCHIVO DE PERSONA PARA ENTENDER MEJOR LOS PROCEDIMIENTOS REALIZADOS ---- !
 
-$persona = new Persona("David", 22);
-$miNombre = Persona::saludar();
-echo $miNombre; 
+ 
 
 
 ?>
