@@ -1,21 +1,28 @@
 <?php
 
-//! DATO DEL Polimorfismo:
-//* Permite tratar objetos de diferentes clases de manera uniforme, utilizando una interfaz común (básicamente las interfaces y las clases abstractas)
+// TODO:  Namespaces en PHP
 
-// TODO: Autoload: 
+//* La palabra clave USE se utiliza en la definición de espacios de nombres para importar clases, funciones y constantes desde otros espacios de nombres. 
 
-//? El autoload es una técnica para cargar automáticamente las clases cuando son necesarias, sin tener que estar ingresando todo el tiempo los archivos para la ejecución del código. 
-
-//* El autoloading en PHP se base en la función spl_autoload_register(), que permite registrar una o varias funciones de autoload
+//? Cuando se utiliza use en la definición de un namespace, se está especificando por decirlo así una ruta corta para poder acceder a un elemento específico de otro espacio de nombres.
 
 
-function my_autoload($clase){
-    require __DIR__.'/clases/'.$clase.'.php'; //* __DIR__ es una constante mágica que da la ruta relativa de un archivo desde afuera. esto es altamente útil cuando estemos manejando en un ambiente de trabajo donde ponerse a poner la salida y entrada de las carpetas va a resultar engorroso y complicado.
-}
-spl_autoload_register('Interfaces'); 
+//! Si se tiene una clase definida en un espacio de clases y se quiere usar en otro espacio de nombres se hacer así:
 
-//* AQUI ya puedo instanciar las clases que están en los archivos 
+    // Aquí lo importante es que si utilizo el namespace, antes de llamar todo tengo que traeme el name space, porque si no lo hago simplemente no ingresa y no hace nada 
+    use App\Clientes;
+    use App\Detalles;
+    function my_autoload($clase){
+        var_dump($clase); // Como estoy en un namespace, el nombre de la clase me entra como App\Detalles
+        $fileClass = explode('\\', $clase); //! Lo que hago con explode es SEPARAR en donde se crea el \ y crear un array 
+        var_dump($fileClass); // aquí se ve mejor
+        require __DIR__.'/clases/'.$fileClass[1].'.php'; // se construye una ruta de archivo utilizando el directorio actual y la carpeta clases. //? La razón por la que se utiliza $fileClass[1], es porqué realmente lo que nos interesa es el nombre de la case, y esta siempre va a quedar en dicha posición.        
+    }
+    spl_autoload_register("my_autoload");
 
-//! OJO, SUPER IMPORTANTE. El nombre de los archivos debe ser el mismo que de las clases.
+    $detalles = new Detalles;
+    echo "<br>";
+    $clientes = new Clientes;
+
+
 ?>
