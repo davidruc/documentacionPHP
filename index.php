@@ -1,61 +1,21 @@
 <?php
 
+//! DATO DEL Polimorfismo:
+//* Permite tratar objetos de diferentes clases de manera uniforme, utilizando una interfaz común (básicamente las interfaces y las clases abstractas)
 
-//Todo: Interfaces: 
+// TODO: Autoload: 
 
-//* Una interfaz es una estructura que define todos los métodos que debe utilizar una clase. Es como un "contrato" que especifica los nombres de los métodos sin especificar como se implementan. ej:
+//? El autoload es una técnica para cargar automáticamente las clases cuando son necesarias, sin tener que estar ingresando todo el tiempo los archivos para la ejecución del código. 
 
-    interface MiContrato{
-        public function tarea1();
-        public function tarea2(); 
-
-    }
-
-    //! De manera más gráfica podemos observar el siguiente ejemplo:
-
-    interface Figura{
-        public function calcularArea();
-    }
-
-    //? En vez de utilizar la palabra reservada para la herencia se utiliza "implements".
-    class Circulo implements Figura{
-        
-        public function __construct(private $radio){
-            $this->radio = $radio;
-        }
-        public function calcularArea(): void{
-            echo "AREA CIRCULO: ".pi()*pow($this->radio, 2);
-        }
-    }
-
-    $circulo = new Circulo(5);
-    $circulo->calcularArea();
+//* El autoloading en PHP se base en la función spl_autoload_register(), que permite registrar una o varias funciones de autoload
 
 
-    //* Cabe aclarar que si se puede hacer herencia de interfaces utilizando la pablabra clave extends, esto sirve para agregar nuevos métodos a interfaces ya existentes.
+function my_autoload($clase){
+    require __DIR__.'/clases/'.$clase.'.php'; //* __DIR__ es una constante mágica que da la ruta relativa de un archivo desde afuera. esto es altamente útil cuando estemos manejando en un ambiente de trabajo donde ponerse a poner la salida y entrada de las carpetas va a resultar engorroso y complicado.
+}
+spl_autoload_register('Interfaces'); 
 
-    //Un ejemplo es esto es el siguiente 
+//* AQUI ya puedo instanciar las clases que están en los archivos 
 
-    interface Figura3D extends Figura {
-        public function calcularVolumen();
-    }
-
-    
-    class Cuadrado implements Figura3D{
-        
-        public function __construct(private $lado){
-            $this->lado = $lado;
-        }
-        public function calcularArea(): void{
-            echo "<br><br> AREA CUADRADO: ". 6* pow($this->lado, 2)."<br><br>";
-        }
-        public function calcularVolumen(): void{
-            echo "VOLUMEN CUADRADO: ".pow($this->lado, 3);
-        }
-    }
-
-    $cuadrado = new Cuadrado(5);
-    $cuadrado->calcularArea();
-    $cuadrado->calcularVolumen();
-
+//! OJO, SUPER IMPORTANTE. El nombre de los archivos debe ser el mismo que de las clases.
 ?>
