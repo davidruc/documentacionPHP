@@ -1,4 +1,4 @@
-**PHP AVANZADO ** *(Integración con bases de datos relacionales (Mysql))*
+**PHP AVANZADO** *(Integración con bases de datos relacionales (Mysql))*
 
 **BASES DE DATOS RELACIONALES:**
 
