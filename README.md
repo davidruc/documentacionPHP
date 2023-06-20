@@ -1,66 +1,21 @@
-**QUE SE PUEDE HACER EN SQL**
+**CONSTRAINTS**
 
-Se pueden hacer muchas cosas relacionadas con la administración y manipulación de bases de datos.
-
-* Crear y administrar bases de datos. Se puede usar para crear y administrar su estructura. Esto incluye: 
-  * Crear tablas
-  * Definir columnas
-  * Establecer restricciones de integridad
-  * crear indices
-  * Definir relaciones entre tablas. 
-* Insertar, actualizar y eliminar datos. Con INSERT, UPDATE Y DELETE. 
-* Consultar datos. Con SELECT
-* Filtrar y ordenar datos con WHERE y con la cláusula ORDEN BY 
-* Agregar funciones y cálculos.  Como: SUM, AVG, COUNT, MAX, MIN
-* Se pueden crear vistas: Las vistan son consultas almacenadas que se pueden usar como tablas virtuales. Se pueden crear vistas en SQL para simplificar consultas complicadas, reutilizar consultas comunes o presentar una vista específica de los datos sin exponer toda la estructura de la base de datos.
-* Establecer restricciones de integridad.
-
-**********
+Los constraints o restricciones son reglas que se aplican a las columnas de una tabla para mantener la integridad de los datos y asegurar que se cumplan ciertas condiciones. Estas restricciones definen las reglas y limitaciones en los valores que pueden ingresarse, actualizarse o eliminar en una tabla. 
 
 
 
-**COMANDOS DDL:**
+*Constraints más comunes en MySQL:*
 
-* SHOW DATABASE
+* PRIMARY KEY: Es una restricción para identificar de manera única cada fila en una tabla. Únicamente puede haber una primary key por tabla y no puede contener valores nulos. 
 
-*Muestra las bases de datos en el servidor local.*
+*Para definir una primary key se utiliza:*
 
-* CREATE DATABASE [nombre de la BD]
+​		ALTER TABLE table_name ADD CONSTRAINT PK_table_name PRIMARY KEY (nombre)
 
-Crea una base de datos en el servidor.
+(En el caso de Maria DB no hay necesidad de poner CONSTRAINT PK_table_name)
 
-* DROP DATABASE [nombre de la BD]
+* FOREIGN KEY: Es una restricción que establece una relación entre dos tablas. Utilizando una columna o un conjunto de columnas en una tabla que hace referencia a la primary key de otra tabla. 
+* UNIQUE: Garantiza que los valores de una columna o conjunto de columnas sean únicos en la tabla.
+* NOT NULL: Es una restricción que indica que una columna no puede contener valores nulos.
+* CHECK: Permite definir condiciones específicas para los valores de una columna. Solo se permite insertar o actualizar registros que cumplan con la condición definida. 
 
-Permite eliminar una base de datos del servidor MySQL.
-
-* USE [Base de datos]
-
-Permite seleccionar una base de datos para administrar cada uno de los objetos de la base de datos. 
-
-* CREATE TABLE [table_name]
-
-Permite crear una tabla en la base de datos en uso.
-
-
-
-* ALTER TABLE
-
-  Permite modificar la estructura de una tabla existente en la base de datos: 
-
-  * AGREGAR COLUMNAS  
-
-    ALTER TABLE table_name **ADD**  column_name datatype;
-
-  * ELIMINAR COLUMNAS
-
-    ALTER TABLE table_name **DROP** COLUMN column_name;
-
-  * RENOMBRAR UNA COLUMNA
-
-    ALTER TABLE table_name **RENAME** COLUMN *old_name* to *new_name*;
-
-  * MODIFICAR EL TIPO DE DATO
-
-    ALTER TABLE table_name **MODIFY** COLUMN  column_name datatype;
-
-    
