@@ -1,21 +1,25 @@
-**CONSTRAINTS**
+**COMANDOS DML:**
 
-Los constraints o restricciones son reglas que se aplican a las columnas de una tabla para mantener la integridad de los datos y asegurar que se cumplan ciertas condiciones. Estas restricciones definen las reglas y limitaciones en los valores que pueden ingresarse, actualizarse o eliminar en una tabla. 
+Son los comandos que se encargan de la manipulación de los registros en las bases de datos.
 
+* *INSERT INTO* : El comando INSERT permite agregar nuevos registros a la tabla seleccionada en la consulta SQL.
 
+  * INSERT INTO table_name (column1, column2,  . . . ) VALUES ( value1, value2,  . . . );
 
-*Constraints más comunes en MySQL:*
+  *También puedo ahorrarme ingresar dato por dato en las column usando* *.
 
-* PRIMARY KEY: Es una restricción para identificar de manera única cada fila en una tabla. Únicamente puede haber una primary key por tabla y no puede contener valores nulos. 
+  * Cuando la tabla cuenta con una columna autoincremental no es necesario pasar como argumento el nombre de la columna ni el valor.
 
-*Para definir una primary key se utiliza:*
+* *UPDATE* : El comando UPDATE se utiliza para modificar los datos existentes en una tabla. Permite actualizar uno o más registros en una tabla. 
 
-​		ALTER TABLE table_name ADD CONSTRAINT PK_table_name PRIMARY KEY (nombre)
+  El comando puede afectar múltiples filas si no se especifica por su cláusula WHERE.
 
-(En el caso de Maria DB no hay necesidad de poner CONSTRAINT PK_table_name)
+  * UPDATE table_name SET column1 = value1, column2 = value2 WHERE condition;
 
-* FOREIGN KEY: Es una restricción que establece una relación entre dos tablas. Utilizando una columna o un conjunto de columnas en una tabla que hace referencia a la primary key de otra tabla. 
-* UNIQUE: Garantiza que los valores de una columna o conjunto de columnas sean únicos en la tabla.
-* NOT NULL: Es una restricción que indica que una columna no puede contener valores nulos.
-* CHECK: Permite definir condiciones específicas para los valores de una columna. Solo se permite insertar o actualizar registros que cumplan con la condición definida. 
+  Usualmente la condición del WHERE es el id.
 
+* *DELETE* : El comando DELETE se utiliza para eliminar registros existentes de una tabla. 
+
+  *  DELETE FROM table_name WHERE condition;
+
+  
