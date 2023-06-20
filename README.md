@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 **MySQL**
+=======
+**PHP AVANZADO** *(Integración con bases de datos relacionales (Mysql))*
+>>>>>>> d30d5c010dc37dc0b99844205b019f05b99be607
 
 Es un sistema manejador de datos libre uso, uno de los más utilizados. 
 
@@ -62,4 +66,30 @@ Para los pcs de campus que tienen mysql nativo es con
   * PRIMARY KEY: Hace que el campo se considere llave primaria.
   * UNIQUE: Evita la repetición de valores. 
 
+<<<<<<< HEAD
   
+=======
+* * *Relación entre tablas*: Estas relaciones pueden ser uno a uno, uno a muchos o muchos a muchos. **Cardinalidad**
+  * *Integridad referencial:* De alguna forma entiendo que no se pueden eliminar, modificar o agregar registros que rompan la relación entre tablas gracias a las fk.
+  * *Consultas y operaciones:* Las claves foráneas permiten realizar consultas que involucran a varias tablas mediante la combinación de información relacionada. *Se pueden utilizar los JOINS y recuperar los datos de manera eficiente.*
+  * Mantenimiento de la consistencia: Si se llega a actualizar la clave primaria en la tabla referenciada, se actualizará de manera automática la clave foranea para mantener la integridad de los datos.
+* Usualmente se ponen las claves foráneas al final y se pone un fk_name para hacer referencia a que es una llave foranea.
+
+**********
+
+**Normalización de bases de datos:**
+
+Es un proceso de diseño que se utiliza para organizar y estructurar las tablas de una base de datos relacionar de manera eficiente y libre de redundancias. El objetivo principal de normalizar es eliminar la duplicación de datos y garantizar la integridad y consistencia de la información que se almacena.
+
+Estas formas normales se dividen en niveles, desde la primera forma normal hasta la quinta. Cada una de ellas aborda un aspecto específico de normalización.
+
+* *Primera forma normal 1NF:*
+  * Elimine los grupos repetidos de las tablas individuales.
+  * Cree una talba independiente para cada conjunto de datos relacionados
+  * Identifique cada conjunto de datos relacionados con una clave principal.
+* *Segunda forma normal 2NF:*
+  * Cree tablas inpendientes para conjuntos de valores que se apliquen a varios registros
+  * relaciones estas tablas con una clave externa. 
+* *Tercera forma normal 3NF:*
+  * Elimine los campos que no dependan de la clave.
+>>>>>>> d30d5c010dc37dc0b99844205b019f05b99be607
